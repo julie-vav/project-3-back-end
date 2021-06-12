@@ -1,9 +1,12 @@
+import { useState } from "react";
 import './App.css';
 import ServiceRequest from "./components/ServiceRequest/ServiceRequest";
 import Form from "./components/Form/Form";
 
-function App() {
-  
+export default function App() {
+  const [state, setState] = useState({
+    requestTypes: [{ requestType: "VPN Issues", description: "System not connecting"}]
+  });
   return (
     <div className="App">
       <header className="App-header">
@@ -15,4 +18,3 @@ function App() {
   );
 }
 
-export default App;

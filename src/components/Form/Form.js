@@ -6,16 +6,21 @@ function Form(props) {
         alert('You have submitted the form.')
       }
   return (
-    <div>
+    <div className="Form">
       <form onSubmit={handleSubmit}>
       <fieldset>
          <label>
-           <p>Employee Name</p>
-           <input name="name" placeholder="Your Name"/>
-           <p>Request Type</p>
-           <input RequestType="RequestType" placeholder="VPN Issues" />
-           <p>Description</p>
-           <input Description="Description" placeholder="System not connecting"/>
+           <span>Employee Name</span>
+           <input className="Name" placeholder="Your Name"/>
+           <span>Request Type</span>
+           <select className="RequestType">
+               <option value="VPN">VPN</option>
+               <option value="Mitel SoftPhone">Mitel SoftPhone</option>
+               <option value="Login Access">Login Access</option>
+               <option value="Payroll">Payroll</option>
+           </select>
+           <span>Description</span>
+           <input className="Description" placeholder="System not connecting"/>
          </label>
        </fieldset>
        <button type="submit">Submit</button>

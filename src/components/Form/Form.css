@@ -1,5 +1,15 @@
-p {
+span {
     color: rgb(252, 191, 242);
     font-size: 20px;
     font-family: 'Lucida Sans';
+    display: flex;
+    margin: 10px;
+}
+
+.Form-Name {
+    font-size: 5px;
+}
+
+.Form-button {
+    margin: 10px;
 }
