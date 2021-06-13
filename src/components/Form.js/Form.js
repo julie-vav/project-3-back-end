@@ -1,42 +1,48 @@
-import styles from './Form.css'
+import './Form.css'
 import { useState } from "react";
 
 function Form(props) {
     const [state, setState] = useState({
-        requests: [{ name: "Your Name", request: "VPN Issues", description: ""}],
+        requests: [{ name: "", request: "", description: ""}],
         newRequest: {
-          name: "Your Name",
+          name: "",
           request: "VPN",
           description: "System not connecting",
         }
       });
       
 
-    const handleSubmit = event => {
-        event.preventDefault();
+    function addRequest(e) {
+        e.preventDefault();
         alert('You have submitted the form.')
+        setState({
+          requests: [...state.requests, state.newRequest],
+          newRequest: {
+            name: "",
+            request: "VPN",
+            description: "",
+          }
+        });
       }
 
     function handleChange(e) {
-        setState(function(prevState) {
-            return {
+        setState(prevState => ({
                 requests: prevState.requests, 
                 newRequest: {
                   ...prevState.newRequest,
                   [e.target.name]: e.target.value
                 }
-            }
-        });
+        }));
     }
 
   return (
     <div className="Form">
       {state.requests.map((s, i) => (
         <article key={i}>
-          <div>{s.requestType}</div> <div>{s.description}</div> 
+          <div>{s.request}</div> <div>{s.description}</div> 
           </article>
       ))}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={addRequest}>
       <fieldset>
          <label>
            <span>Employee Name</span>
