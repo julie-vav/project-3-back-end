@@ -4,9 +4,11 @@ import { useState } from "react";
 function Form(props) {
     const [state, setState] = useState({
         requests: [{ name: "Your Name", request: "VPN Issues", description: ""}],
-        name: "Your Name",
-        request: "VPN",
-        description: "System not connecting",
+        newRequest: {
+          name: "Your Name",
+          request: "VPN",
+          description: "System not connecting",
+        }
       });
       
 
@@ -18,8 +20,11 @@ function Form(props) {
     function handleChange(e) {
         setState(function(prevState) {
             return {
-                ...prevState, 
-                requestTypes: e.target.value,
+                requests: prevState.requests, 
+                newRequest: {
+                  ...prevState.newRequest,
+                  [e.target.name]: e.target.value
+                }
             }
         });
     }
@@ -35,16 +40,16 @@ function Form(props) {
       <fieldset>
          <label>
            <span>Employee Name</span>
-           <input className="Name" value={state.Name}  onChange={handleChange} placeholder="Your Name"/>
+           <input name="name" value={state.newRequest.name}  onChange={handleChange} placeholder="Your Name"/>
            <span>Request Type</span>
-           <select className="RequestType" value={state.requestType}onChange={handleChange} onChange={handleChange}>
+           <select name="request" value={state.newRequest.request}onChange={handleChange} onChange={handleChange}>
                <option value="VPN">VPN</option>
                <option value="Mitel SoftPhone">Mitel SoftPhone</option>
                <option value="Login Access">Login Access</option>
                <option value="Payroll">Payroll</option>
            </select>
            <span>Description</span>
-           <input className="Description" value={state.Description} onChange={handleChange} placeholder="System not connecting"/>
+           <input name="description" value={state.newRequest.description} onChange={handleChange} placeholder="System not connecting"/>
          </label>
        </fieldset>
        <button type="submit">Submit</button>
