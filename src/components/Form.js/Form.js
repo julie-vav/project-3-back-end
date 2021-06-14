@@ -1,5 +1,5 @@
 import './Form.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Form(props) {
     const [state, setState] = useState({
@@ -8,9 +8,24 @@ function Form(props) {
           name: "",
           request: "VPN",
           description: "System not connecting",
-        }
+        },
       });
       
+useEffect(function() {
+  async function getAppData() {
+
+    const requests = await fetch('http://localhost:3001/api/requests')
+    .then(res => res.json());
+
+    setState(prevState => ({
+      ...prevState,
+      requests
+    }));
+  }
+
+  getAppData();
+
+}, []);
 
     function addRequest(e) {
         e.preventDefault();
@@ -46,7 +61,7 @@ function Form(props) {
       <fieldset>
          <label>
            <span>Employee Name</span>
-           <input name="name" value={state.newRequest.name}  onChange={handleChange} placeholder="Your Name"/>
+           <input name="name" value={state.newRequest.name}  onChange={handleChange} placeholder="Username"/>
            <span>Request Type</span>
            <select name="request" value={state.newRequest.request}onChange={handleChange} onChange={handleChange}>
                <option value="VPN">VPN</option>
