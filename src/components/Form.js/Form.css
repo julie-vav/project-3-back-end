@@ -51,23 +51,29 @@ section {
     display: flex;
   }
   
-  article > div:nth-child(1) {
-    flex-grow: 1;
-    flex-direction: column;
-    display: flex;
-  }
-    
-  input,
-  select {
+
+  input, select {
     width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lucida Sans';
     font-size: 1rem;
     font-weight: bold;
-    padding: 0.4rem;
     color: #f17d80;
-    border: 2px solid #737495;
     border-radius: 0;
     outline: none;
     -webkit-appearance: none;
   }
     
+  article {
+      display: flex;
+      color: white;
+      background-color: #737495;
+      border: 2px solid black;
+      padding: .75rem;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+  }
+
+  article > div {
+      padding: 1rem;
+}

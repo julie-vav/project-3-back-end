@@ -3,6 +3,8 @@ var logger = require('morgan');
 var cors = require('cors');
 var requestsRouter = require('./routes/requests');
 var app = express();
+var port = process.env.PORT || '3001';
+
 
 require('dotenv').config();
 require('./config/database');

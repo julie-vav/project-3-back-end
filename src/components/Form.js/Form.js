@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 
 function Form(props) {
     const [state, setState] = useState({
-        requests: [{ name: "", request: "", description: ""}],
+        requests: [{ name: " ", request: "", description: "", priority: ""}],
         newRequest: {
           name: "",
           request: "VPN",
           description: "System not connecting",
+          priority: "Low"
         },
       });
       
@@ -42,8 +43,9 @@ async function handleSubmit(e) {
           requests: [...state.requests, request],
           newRequest: {
             name: "",
-             request: "VPN",
-             description: ""
+            request: "VPN",
+            description: "",
+            priority: ""
           }
         });
     } catch (error) {
@@ -64,7 +66,8 @@ async function handleSubmit(e) {
         newRequest: {
           name: "",
            request: "VPN",
-           description: ""
+           description: "",
+           priority: "Low"
         }
       });
     }
@@ -84,7 +87,7 @@ async function handleSubmit(e) {
     <div className="Form">
       {state.requests.map((s, i) => (
         <article key={i}>
-          <div>{s.name}</div> <div>{s.request}</div> <div>{s.description}</div> 
+          <div>Employee ID: {s.name}</div> <div>Request: {s.request}</div> <div>Description: {s.description}</div> <div>Priority: {s.priority}</div> 
           </article>
       ))}
       <form onSubmit={handleSubmit}>
@@ -95,7 +98,7 @@ async function handleSubmit(e) {
         </label>
         <label>
            <span>Request Type</span>
-           <select name="request" value={state.newRequest.request}onChange={handleChange} onChange={handleChange}>
+           <select name="request" value={state.newRequest.request}onChange={handleChange} >
                <option value="VPN">VPN</option>
                <option value="Mitel SoftPhone">Mitel SoftPhone</option>
                <option value="Login Access">Login Access</option>
@@ -107,10 +110,17 @@ async function handleSubmit(e) {
            <span>Description</span>
            <input name="description" value={state.newRequest.description} onChange={handleChange} placeholder="System not connecting"/>
         </label>
+        <label>
+           <span>Priority</span>
+           <select name="priority" value={state.newRequest.priority}onChange={handleChange} placeholder="Low">
+               <option value="Low">Low</option>
+               <option value="Medium">Medium</option>
+               <option value="Urgent">Urgent</option>
+           </select>
+        </label>
        </section>
        <button type="submit">Submit</button>
       </form>
-  
     </div>
   );
 }
