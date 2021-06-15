@@ -1,13 +1,17 @@
 var express = require('express');
 var router = express.Router();
+var Request = require('../models/request');
 
 router.get('/', function(req, res, next) {
   res.status(200).json([
-    {request: 'VPN', description: 'System not connecting'},
-    {request: 'Mitel SoftPhone', description: 'Clients cannot hear me, but I can hear them'},
-    {request: 'Login Access', description: 'Cannot log into salesforce or CAM'},
-    {request: 'Payroll', description: 'Cannot submit PTO request'},
+    {name: 'julia.vavrinyuk', request: 'VPN', description: 'System not connecting'}
   ]);
+});
+
+router.post('/', function(req, res) {
+  Request.create(req.body, function(err, request) {
+    res.status(201).json(request);
+  });
 });
 
 module.exports = router;

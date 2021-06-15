@@ -11,6 +11,17 @@ span {
     color: white;
 }
 
-form {
-    color: black;
+article {
+    color: white;
+    font-weight: bold;
+    font-family: 'Lucida Sans';
+    display: flexbox;
+    flex-wrap: wrap;
+    text-align: center;
+    border: 3px solid #737495;
+    border-radius: 0;
+    padding: 0.4rem;
+    outline: none;
+    -webkit-appearance: none;
 }
+
