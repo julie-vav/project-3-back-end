@@ -88,10 +88,12 @@ async function handleSubmit(e) {
           </article>
       ))}
       <form onSubmit={handleSubmit}>
-      <fieldset>
+      <section>
          <label>
            <span>Employee ID</span>
            <input name="name" value={state.newRequest.name}  onChange={handleChange} placeholder="Username"/>
+        </label>
+        <label>
            <span>Request Type</span>
            <select name="request" value={state.newRequest.request}onChange={handleChange} onChange={handleChange}>
                <option value="VPN">VPN</option>
@@ -100,10 +102,12 @@ async function handleSubmit(e) {
                <option value="Payroll">Payroll</option>
                <option value="Other">Other</option>
            </select>
+        </label>
+        <label>
            <span>Description</span>
            <input name="description" value={state.newRequest.description} onChange={handleChange} placeholder="System not connecting"/>
-         </label>
-       </fieldset>
+        </label>
+       </section>
        <button type="submit">Submit</button>
       </form>
   
